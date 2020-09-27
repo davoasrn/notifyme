@@ -138,6 +138,7 @@ const NotifyMe = props => {
         setShowCount(false);
         reactLocalStorage.setObject(storageKey, { 'id': data[0][key] });
         setReadIndex(0);
+        props.onMarkAsRead && props.onMarkAsRead();
     }
 
     return (
@@ -173,7 +174,7 @@ const NotifyMe = props => {
                             <ul className="notification-info-panel">
                                 {
                                     data.length > 0 ?
-                                    
+
                                     data.map((message, index) =>
                                         <li
                                             className={index < raedIndex ? 'notification-message unread' : 'notification-message'}
@@ -199,6 +200,8 @@ const NotifyMe = props => {
     )
 };
 
+export default NotifyMe;
+
 NotifyMe.prototype = {
     storageKey: PropTypes.string,
     notific_key: PropTypes.string.isRequired,
@@ -209,7 +212,6 @@ NotifyMe.prototype = {
     size: PropTypes.string,
     heading: PropTypes.string,
     multiLineSplitter: PropTypes.string,
-    showDate: PropTypes.bool
+    showDate: PropTypes.bool,
+    onMarkAsRead: PropTypes.func
 }
-
-export default NotifyMe;
