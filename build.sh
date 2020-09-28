@@ -29,20 +29,3 @@ yarn build
 cp ./package.json ./dist
 [ -f README.md ] && cp ./README.md ./dist
 [ -f *.scss ] && cp ./*.scss ./dist/
-
-#******************************************************
-#******* Create a tarball npm for local testing *******
-#******************************************************
-cd dist
-# npm pack
-cd ..
-
-#*****************************************************************************************
-#******* Login and Publish => There are 2 ways to login*******
-# 1. Using non interactive mode => Uncomment the line starts with npm-login-noninteractive
-# and edit the required parameter values like, <USER_NAME>, <PASSWORD> and <EMAIL>
-# 2. Using Intercative mode(Default) => npm login will ask for username, password and email
-#******************************************************************************************
-# npm-login-noninteractive -u <USER_NAME> -p <PASSWORD> -e <EMAIL>
-npm login
-yarn publish ./dist
