@@ -185,7 +185,7 @@ const NotifyMe = props => {
                                                 <span>{getDayDiff(message[key])}</span>
                                                 {showDate && <span>{' ('}{getWhen(message[key])}{')'}</span>}
                                             </div>
-                                            <NotifyLink url={link}>
+                                            <NotifyLink url={message[link]}>
                                                 <div className="content" dangerouslySetInnerHTML={getContent(message[notificationMsg])} />
                                             </NotifyLink>
                                         </li>
