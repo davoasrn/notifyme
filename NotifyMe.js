@@ -32,7 +32,7 @@ const NotifyMe = props => {
     const storageKey = props.storageKey || 'notification_timeline_storage_id';
     const key = props.notific_key;
     const link = props.link;
-    const notifyLink = props.notifyLink;
+    const NotifyLink = props.notifyLink;
     const notificationMsg = props.notific_value;
     const sortedByKey = props.sortedByKey;
     const heading = props.heading || 'Notifications';
@@ -185,9 +185,9 @@ const NotifyMe = props => {
                                                 <span>{getDayDiff(message[key])}</span>
                                                 {showDate && <span>{' ('}{getWhen(message[key])}{')'}</span>}
                                             </div>
-                                            <notifyLink url={link}>
+                                            <NotifyLink url={link}>
                                                 <div className="content" dangerouslySetInnerHTML={getContent(message[notificationMsg])} />
-                                            </notifyLink>
+                                            </NotifyLink>
                                         </li>
                                     ) :
                                     <>
