@@ -47,21 +47,22 @@ const NotifyMe = props => {
         }
 
         // We read if any last read item id is in the local storage
-        // let readItemLs = reactLocalStorage.getObject(storageKey);
-        // let readMsgId = Object.keys(readItemLs).length > 0 ? readItemLs['id'] : '';
+         let readItemLs = reactLocalStorage.getObject(storageKey);
+         let readMsgId = '';
+         //let readMsgId = Object.keys(readItemLs).length > 0 ? readItemLs['id'] : '';
 
         // if the id found, we check what is the index of that message in the array and query it. If not found,
         // nothing has been read. Hence count should be same as all the message count.
-        //let readIndex = (readMsgId === '') ? data.length : data.findIndex(elem => elem[key] === readMsgId);
+        let readIndex = (readMsgId === '') ? data.length : data.findIndex(elem => elem[key] === readMsgId);
 
         // if the id is not found, it all flushed out and start again
-        //readIndex === -1 ? readIndex = data.length : readIndex;
+        readIndex === -1 ? readIndex = data.length : readIndex;
 
-        //setReadIndex(readIndex);
+        setReadIndex(readIndex);
 
         // If there are messages and readIndex is pointing to at least one message, we will show the count bubble.
-        //(data.length && readIndex) > 0 ? setShowCount(true) : setShowCount(false);
-        //setMessageCount(readIndex);
+        (data.length && readIndex) > 0 ? setShowCount(true) : setShowCount(false);
+        setMessageCount(readIndex);
     }, [data]);
 
     // Handle the click on the notification bell
@@ -139,7 +140,7 @@ const NotifyMe = props => {
     const markAsRead = () => {
         setShowCount(false);
         //reactLocalStorage.setObject(storageKey, { 'id': data[0][key] });
-        //setReadIndex(0);
+        setReadIndex(0);
         props.onMarkAsRead && props.onMarkAsRead();
     }
 
@@ -179,8 +180,7 @@ const NotifyMe = props => {
 
                                     data.map((message, index) =>
                                         <li
-                                            //className={index < raedIndex ? 'notification-message unread' : 'notification-message'}
-                                            className={'notification-message unread'}
+                                            className={index < raedIndex ? 'notification-message unread' : 'notification-message'}
                                             key={index}>
                                             <div className="timestamp">
                                                 <span>{getDayDiff(message[key])}</span>
