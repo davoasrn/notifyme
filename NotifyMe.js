@@ -47,7 +47,7 @@ const NotifyMe = props => {
         }
 
         // We read if any last read item id is in the local storage
-         let readItemLs = reactLocalStorage.getObject(storageKey);
+         //let readItemLs = reactLocalStorage.getObject(storageKey);
          let readMsgId = '';
          //let readMsgId = Object.keys(readItemLs).length > 0 ? readItemLs['id'] : '';
 
