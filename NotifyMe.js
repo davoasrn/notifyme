@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 
 import moment from 'moment';
 
-import { reactLocalStorage } from 'reactjs-localstorage';
+//import { reactLocalStorage } from 'reactjs-localstorage';
 
 import { Bell, BellOff, BookOpen, AlertTriangle } from 'react-feather';
 
@@ -47,8 +47,8 @@ const NotifyMe = props => {
         }
 
         // We read if any last read item id is in the local storage
-        let readItemLs = reactLocalStorage.getObject(storageKey);
-        let readMsgId = Object.keys(readItemLs).length > 0 ? readItemLs['id'] : '';
+        // let readItemLs = reactLocalStorage.getObject(storageKey);
+        // let readMsgId = Object.keys(readItemLs).length > 0 ? readItemLs['id'] : '';
 
         // if the id found, we check what is the index of that message in the array and query it. If not found,
         // nothing has been read. Hence count should be same as all the message count.
@@ -138,7 +138,7 @@ const NotifyMe = props => {
     // Call the function when mark as read link is clicked
     const markAsRead = () => {
         setShowCount(false);
-        reactLocalStorage.setObject(storageKey, { 'id': data[0][key] });
+        //reactLocalStorage.setObject(storageKey, { 'id': data[0][key] });
         setReadIndex(0);
         props.onMarkAsRead && props.onMarkAsRead();
     }
